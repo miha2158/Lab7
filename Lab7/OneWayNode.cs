@@ -36,10 +36,19 @@
 
         public override string ToString()
         {
-            if (Next == null)
-                return " -> " + Info;
+            return Info.ToString();
+        }
 
-            return " -> " + Info + Next;
+        public string ToString(bool doAll)
+        {
+            if (doAll)
+            {
+                if (Next == null)
+                    return " -> " + Info;
+
+                return " -> " + Info + Next.ToString(true);
+            }
+            return Info.ToString();
         }
 
         public int Info;
