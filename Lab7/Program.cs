@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace Lab7
 {
+    public class
+
     static class Program
     {
         /// <summary>
