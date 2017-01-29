@@ -2,35 +2,29 @@
 {
     partial class Form1
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void Dispose (bool disposing)
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                components.Dispose( );
             }
             base.Dispose(disposing);
         }
-        
-        private void InitializeComponent()
+
+        private void InitializeComponent ( )
         {
-            this.allTabs = new System.Windows.Forms.TabControl();
-            this.oneWay = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.twoWay = new System.Windows.Forms.TabPage();
-            this.binTree = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.allTabs.SuspendLayout();
-            this.oneWay.SuspendLayout();
-            this.SuspendLayout();
+            this.allTabs = new System.Windows.Forms.TabControl( );
+            this.oneWay = new System.Windows.Forms.TabPage( );
+            this.textBox1 = new System.Windows.Forms.TextBox( );
+            this.twoWay = new System.Windows.Forms.TabPage( );
+            this.binTree = new System.Windows.Forms.TabPage( );
+            this.button1 = new System.Windows.Forms.Button( );
+            this.allTabs.SuspendLayout( );
+            this.oneWay.SuspendLayout( );
+            this.SuspendLayout( );
             // 
             // allTabs
             // 
@@ -111,11 +105,11 @@
             this.Text = " ";
             this.allTabs.ResumeLayout(false);
             this.oneWay.ResumeLayout(false);
-            this.oneWay.PerformLayout();
+            this.oneWay.PerformLayout( );
             this.ResumeLayout(false);
 
         }
-        
+
         private System.Windows.Forms.TabControl allTabs;
         private System.Windows.Forms.TabPage oneWay;
         private System.Windows.Forms.TabPage twoWay;
@@ -124,4 +118,3 @@
         private System.Windows.Forms.Button button1;
     }
 }
-
