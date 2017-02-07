@@ -22,12 +22,18 @@ namespace Lab7
             InitializeComponent( );
         }
 
-        OneWayNode head = new OneWayNode(0);
+        #region OneWay
+
+        OneWayNode head;
 
         private void OWFill_Click (object sender, EventArgs e)
         {
             DeleteLastEven.Enabled = true;
+
+            if (head == null)
+                head = new OneWayNode(0);
             head.Refill();
+
             OWBox1.Text = head.ToString(true);
             OWBox2.Text = string.Empty;
         }
@@ -36,8 +42,9 @@ namespace Lab7
         {
             if(head == null)
             {
+                MessageBox.Show("Нельзя удалить ничего из пустого списка");
+                DeleteLastEven.Enabled = false;
                 head = new OneWayNode(0);
-                head.Refill();
             }
 
             if (OWBox2.Text != string.Empty)
@@ -45,7 +52,19 @@ namespace Lab7
 
             if (!OneWayNode.DeleteLastEven(ref head))
                 MessageBox.Show("В списке нет чётных элементов", "ОК?");
-            OWBox2.Text = head.ToString(true);
+            try
+            { OWBox2.Text = head.ToString(true);}
+            catch (NullReferenceException)
+            { OWBox2.Text = " ";}
         }
+
+        #endregion
+
+        #region TwoWay
+
+        
+
+        #endregion
+
     }
 }

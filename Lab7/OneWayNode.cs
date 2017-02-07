@@ -4,6 +4,11 @@ namespace Lab7
 {
     public class OneWayNode
     {
+        protected OneWayNode ( )
+        {
+
+        }
+
         public OneWayNode (int number)
         {
             Info = number;
@@ -17,23 +22,27 @@ namespace Lab7
             headNode = this;
         }
 
-        protected static Random Rand = new Random ( );
-        protected static int RRand (int number) => Rand.Next(number);
+        #region Randomise
+
+        protected static Random RandNum = new Random( );
+        protected static int Rand (int number) => RandNum.Next(number);
         protected const int MaxSize = 15;
         protected const int MaxNumber = 99;
 
-        public void Refill()
+        public void Refill ( )
         {
-            Info = RRand(MaxNumber) + 1;
             OneWayNode point = this;
-            for (int i = RRand(MaxSize) + 2; i-- > 0;)
+            for (int i = Rand(MaxSize) + 2; i-- > 0;)
             {
-                point.Next = new OneWayNode(RRand(MaxNumber));
+                point.Info = Rand(MaxNumber) * 2;
+                point.Next = new OneWayNode(0);
                 point = point.Next;
             }
             point.Next = null;
 
         }
+
+        #endregion
 
         public static bool DeleteLastEven (ref OneWayNode headNode)
         {
@@ -68,6 +77,8 @@ namespace Lab7
             return false;
         }
 
+        #region ToString
+
         public override string ToString ( )
         {
             return Info.ToString( );
@@ -79,12 +90,15 @@ namespace Lab7
                 return Info.ToString( );
 
             if (Next == null)
-                return Info.ToString();
+                return Info.ToString( );
 
             return Info + " -> " + Next.ToString(true);
         }
 
+        #endregion
+
         public int Info;
         public OneWayNode Next;
+
     }
 }

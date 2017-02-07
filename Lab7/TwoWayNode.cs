@@ -1,23 +1,66 @@
-﻿namespace Lab7
+﻿using System;
+
+namespace Lab7
 {
-    public class TwoWayNode
+    public class TwoWayNode: OneWayNode
     {
+        protected TwoWayNode ( )
+        {
+
+        }
+
         public TwoWayNode (string info, TwoWayNode next = null, TwoWayNode prev = null)
         {
             Info = info;
             Next = next;
-            if (Next != null)
+            if (next != null)
                 Next.Prev = this;
             Prev = prev;
             if (Prev != null)
                 Prev.Next = this;
         }
 
-        public TwoWayNode ( )
+        protected new static bool DeleteLastEven (ref OneWayNode headNode )
         {
+            return false;
         }
 
-        public void SetFirst (ref TwoWayNode point)
+        #region Randomise
+
+        protected static char RandChar => (char)RandNum.Next( );
+
+        public static string RandString (int length)
+        {
+            string placeholder = string.Empty;
+            while (placeholder.Length < length)
+            {
+                char c = '-';
+                while (!char.IsLetterOrDigit(c))
+                    c = RandChar;
+                placeholder = placeholder + c;
+            }
+            return placeholder;
+        }
+
+
+        public new void Refill ( )
+        {
+            Prev = null;
+            TwoWayNode point = this;
+            for (int i = Rand(MaxSize); i-- > 0;)
+            {
+                Info = RandString(5);
+                point.Next = new TwoWayNode( );
+                point.Next.Prev = point;
+                point = point.Next;
+            }
+        }
+
+        #endregion
+
+        #region Movement
+
+        public static void SetFirst (ref TwoWayNode point)
         {
             while (point.Prev != null)
                 point = point.Prev;
@@ -38,6 +81,10 @@
                 temp = temp.Prev;
             return temp;
         }
+
+        #endregion
+
+        #region Addition
 
         public void AddNext (TwoWayNode element)
         {
@@ -61,9 +108,50 @@
             Prev = element;
         }
 
+        #endregion
 
-        public TwoWayNode Next;
+        #region ToString
+
+        public override string ToString ( )
+        {
+            return Info;
+        }
+
+        public new string ToString(bool doAll)
+        {
+
+            if (!doAll)
+                return Info;
+
+            TwoWayNode point = this;
+            SetFirst(ref point);
+            point.WriteNext( );
+            
+        }
+
+        public string WriteNext ( )
+        {
+            if (Next == null)
+                return Info;
+
+            return Info + " <-> " + Next.WriteNext();
+        }
+
+        #endregion
+
+        protected int Number
+        {
+            get
+            {
+                if (Prev == null)
+                    return 0;
+
+                return Prev.Number + 1;
+            }
+        }
+
+        public new TwoWayNode Next;
         public TwoWayNode Prev;
-        public string Info;
+        public new string Info = string.Empty;
     }
 }
