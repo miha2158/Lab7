@@ -11,7 +11,7 @@ namespace Lab7
             Right = right;
         }
 
-        protected Random random = new Random( );
+        protected static Random random = new Random( );
         protected const int MaxChar = 128;
 
         public void Fill ( )

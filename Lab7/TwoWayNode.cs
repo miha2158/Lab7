@@ -34,7 +34,7 @@
         public TwoWayNode MovePrev (int number)
         {
             var temp = this;
-            while (number-- != 0 && temp.Next != null)
+            while (number-- != 0 && temp.Prev != null)
                 temp = temp.Prev;
             return temp;
         }

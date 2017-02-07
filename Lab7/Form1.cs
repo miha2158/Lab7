@@ -12,7 +12,7 @@ namespace Lab7
 {
     public partial class Form1: Form
     {
-        public Random random = new Random( );
+        public static Random random = new Random( );
         public const int lowEnd = -100;
         public const int highEnd = 100;
         public const int maxLength = 20;
@@ -22,9 +22,30 @@ namespace Lab7
             InitializeComponent( );
         }
 
+        OneWayNode head = new OneWayNode(0);
 
+        private void OWFill_Click (object sender, EventArgs e)
+        {
+            DeleteLastEven.Enabled = true;
+            head.Refill();
+            OWBox1.Text = head.ToString(true);
+            OWBox2.Text = string.Empty;
+        }
 
+        private void DeleteLastEven_Click (object sender, EventArgs e)
+        {
+            if(head == null)
+            {
+                head = new OneWayNode(0);
+                head.Refill();
+            }
 
+            if (OWBox2.Text != string.Empty)
+                OWBox1.Text = OWBox2.Text;
 
+            if (!OneWayNode.DeleteLastEven(ref head))
+                MessageBox.Show("В списке нет чётных элементов", "ОК?");
+            OWBox2.Text = head.ToString(true);
+        }
     }
 }
