@@ -34,7 +34,7 @@ namespace Lab7
             OneWayNode point = this;
             for (int i = Rand(MaxSize) + 2; i-- > 0;)
             {
-                point.Info = Rand(MaxNumber) * 2;
+                point.Info = Rand(MaxNumber);
                 point.Next = new OneWayNode(0);
                 point = point.Next;
             }

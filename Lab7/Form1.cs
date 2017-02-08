@@ -62,7 +62,56 @@ namespace Lab7
 
         #region TwoWay
 
-        
+        TwoWayNode point;
+
+        private void TWAdd_Click (object sender, EventArgs e)
+        {
+            TwoWayNode.SetFirst(ref point);
+            int MainNumber;
+            int.TryParse(TWNumber.Text, out MainNumber);
+            MainNumber--;
+            if(MainNumber < 0)
+            {
+                MessageBox.Show("Нельзя добавить элемент на отрицательное положение в списке");
+                return;
+            }
+
+            if (MainNumber == 0)
+            {
+                if (point == null)
+                    point = new TwoWayNode(TwoWayNode.RandString( ));
+                else
+                    point.AddPrev(new TwoWayNode(TwoWayNode.RandString( )));
+
+                if (TWBox2.Text != string.Empty)
+                    TWBox1.Text = TWBox2.Text;
+                TWBox2.Text = point.ToString(true);
+                return;
+            }
+
+            TwoWayNode temp = point.MoveNext(--MainNumber);
+            if(temp.Number != MainNumber)
+            {
+                MessageBox.Show("Нельзя добавить элемент после конца списка");
+                return;
+            }
+            temp.AddNext(new TwoWayNode(TwoWayNode.RandString( )));
+
+
+            if (TWBox2.Text != string.Empty)
+                TWBox1.Text = TWBox2.Text;
+            TWBox2.Text = point.ToString(true);
+        }
+
+        private void TWFill_Click (object sender, EventArgs e)
+        {
+            point = new TwoWayNode(string.Empty);
+            point.Refill();
+            TwoWayNode.SetFirst(ref point);
+            
+            TWBox1.Text = point.ToString(true);
+            TWBox2.Text = string.Empty;
+        }
 
         #endregion
 

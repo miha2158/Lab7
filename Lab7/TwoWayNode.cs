@@ -27,9 +27,9 @@ namespace Lab7
 
         #region Randomise
 
-        protected static char RandChar => (char)RandNum.Next( );
+        protected static char RandChar => (char)RandNum.Next(128);
 
-        public static string RandString (int length)
+        public static string RandString (int length = 5)
         {
             string placeholder = string.Empty;
             while (placeholder.Length < length)
@@ -49,11 +49,11 @@ namespace Lab7
             TwoWayNode point = this;
             for (int i = Rand(MaxSize); i-- > 0;)
             {
-                Info = RandString(5);
-                point.Next = new TwoWayNode( );
-                point.Next.Prev = point;
+                point.Info = RandString();
+                point.Next = new TwoWayNode(string.Empty, prev:point);
                 point = point.Next;
             }
+            point.Info = RandString( );
         }
 
         #endregion
@@ -68,18 +68,18 @@ namespace Lab7
 
         public TwoWayNode MoveNext (int number)
         {
-            var temp = this;
-            while (number-- != 0 && temp.Next != null)
-                temp = temp.Next;
-            return temp;
+            var place = this;
+            while (number-- > 0 && place.Next != null)
+                place = place.Next;
+            return place;
         }
 
         public TwoWayNode MovePrev (int number)
         {
-            var temp = this;
-            while (number-- != 0 && temp.Prev != null)
-                temp = temp.Prev;
-            return temp;
+            var place = this;
+            while (number-- > 0 && place.Prev != null)
+                place = place.Prev;
+            return place;
         }
 
         #endregion
@@ -90,11 +90,11 @@ namespace Lab7
         {
             if (Next != null)
             {
-                Next.Prev = element;
                 element.Next = Next;
-                element.Prev = this;
+                Next.Prev = element;
             }
             Next = element;
+            element.Prev = this;
         }
 
         public void AddPrev (TwoWayNode element)
@@ -103,9 +103,9 @@ namespace Lab7
             {
                 Prev.Next = element;
                 element.Prev = Prev;
-                element.Next = this;
             }
             Prev = element;
+            element.Next = this;
         }
 
         #endregion
@@ -125,21 +125,20 @@ namespace Lab7
 
             TwoWayNode point = this;
             SetFirst(ref point);
-            point.WriteNext( );
-            
+            return point.WriteAllNexts( );
         }
 
-        public string WriteNext ( )
+        public string WriteAllNexts ( )
         {
             if (Next == null)
                 return Info;
 
-            return Info + " <-> " + Next.WriteNext();
+            return Info + " <-> " + Next.WriteAllNexts();
         }
 
         #endregion
 
-        protected int Number
+        public int Number
         {
             get
             {

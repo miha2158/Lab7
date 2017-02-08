@@ -12,27 +12,52 @@ namespace Lab7
         }
 
         protected static Random random = new Random( );
-        protected const int MaxChar = 128;
-
-        public void Fill ( )
+        public static char RandChar
         {
-            Info = (char)random.Next(MaxChar);
-
-            if (random.Next(2) % 2 == 0)
-                return;
-            try
+            get
             {
-
+                char c = '-';
+                while (!char.IsLetterOrDigit(c))
+                    c = (char)random.Next(128);
+                return c;
             }
-            catch (Exception)
-            {
-
-            }
-
-
-
         }
 
+        public static void BalanceMake (out BinTree root, int size)
+        {
+            if (size <= 0)
+            {
+                root = null;
+                return;
+            }
+
+            root = new BinTree(RandChar);
+            BalanceMake(out root.Left, size / 2);
+            BalanceMake(out root.Right, size - size / 2 - 1);
+        }
+
+
+        public override string ToString ( )
+        {
+            return Write();
+        }
+
+        protected static readonly int Margin = 4;
+
+        protected string Write (int M = 2)
+        {
+            string result = "\r\n";
+
+            result = result + Left?.Write(M + Margin);
+
+            for (int i = M; i-- > 0;)
+                result = result + " ";
+            result = result + Info + "\r\n";
+
+            result = result + Right?.Write(M + Margin);
+
+            return result;
+        }
 
 
         public char Info;
