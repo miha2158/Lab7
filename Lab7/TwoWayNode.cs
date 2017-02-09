@@ -60,10 +60,12 @@ namespace Lab7
 
         #region Movement
 
-        public static void SetFirst (ref TwoWayNode point)
+        public TwoWayNode SetFirst ( )
         {
+            TwoWayNode point = this;
             while (point.Prev != null)
                 point = point.Prev;
+            return point;
         }
 
         public TwoWayNode MoveNext (int number)
@@ -101,8 +103,8 @@ namespace Lab7
         {
             if (Prev != null)
             {
-                Prev.Next = element;
                 element.Prev = Prev;
+                Prev.Next = element;
             }
             Prev = element;
             element.Next = this;
@@ -124,7 +126,7 @@ namespace Lab7
                 return Info;
 
             TwoWayNode point = this;
-            SetFirst(ref point);
+            point = point.SetFirst();
             return point.WriteAllNexts( );
         }
 

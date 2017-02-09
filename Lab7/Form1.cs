@@ -66,7 +66,7 @@ namespace Lab7
 
         private void TWAdd_Click (object sender, EventArgs e)
         {
-            TwoWayNode.SetFirst(ref point);
+            point = point.SetFirst();
             int MainNumber;
             int.TryParse(TWNumber.Text, out MainNumber);
             MainNumber--;
@@ -107,13 +107,34 @@ namespace Lab7
         {
             point = new TwoWayNode(string.Empty);
             point.Refill();
-            TwoWayNode.SetFirst(ref point);
+            point = point.SetFirst();
             
             TWBox1.Text = point.ToString(true);
             TWBox2.Text = string.Empty;
         }
 
+
         #endregion
 
+        #region BinTree
+
+        BinTree root = null;
+
+        private void TreeFill_Click (object sender, EventArgs e)
+        {
+            root = BinTree.BalanceMake(random.Next((int)(maxLength*1.2)) + 1);
+            TreeBox1.Text = root.ToString( );
+            TreeHeight.Text = root.Height.ToString();
+            SearchTree.Enabled = true;
+        }
+
+        private void SearchTree_Click (object sender, EventArgs e)
+        {
+            TreeBox1.Text = root.SearchTree( ).ToString( );
+        }
+
+
+
+        #endregion
     }
 }

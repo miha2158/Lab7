@@ -1,4 +1,6 @@
-﻿namespace Lab7
+﻿using System.Drawing;
+
+namespace Lab7
 {
     partial class Form1
     {
@@ -30,9 +32,15 @@
             this.TWFill = new System.Windows.Forms.Button();
             this.TWBox1 = new System.Windows.Forms.TextBox();
             this.binTree = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TreeHeight = new System.Windows.Forms.TextBox();
+            this.TreeFill = new System.Windows.Forms.Button();
+            this.TreeBox1 = new System.Windows.Forms.TextBox();
+            this.SearchTree = new System.Windows.Forms.Button();
             this.allTabs.SuspendLayout();
             this.oneWay.SuspendLayout();
             this.twoWay.SuspendLayout();
+            this.binTree.SuspendLayout();
             this.SuspendLayout();
             // 
             // allTabs
@@ -123,11 +131,11 @@
             // TWNumberLabel
             // 
             this.TWNumberLabel.AutoSize = true;
-            this.TWNumberLabel.Location = new System.Drawing.Point(341, 213);
+            this.TWNumberLabel.Location = new System.Drawing.Point(416, 210);
             this.TWNumberLabel.Name = "TWNumberLabel";
             this.TWNumberLabel.Size = new System.Drawing.Size(131, 32);
             this.TWNumberLabel.TabIndex = 6;
-            this.TWNumberLabel.Text = "Добавить элемент\r\n на номер";
+            this.TWNumberLabel.Text = "Добавить элемент\n на позицию №";
             // 
             // TWBox2
             // 
@@ -142,20 +150,20 @@
             // 
             // TWAdd
             // 
-            this.TWAdd.Location = new System.Drawing.Point(594, 210);
+            this.TWAdd.Location = new System.Drawing.Point(670, 210);
             this.TWAdd.Name = "TWAdd";
-            this.TWAdd.Size = new System.Drawing.Size(215, 35);
+            this.TWAdd.Size = new System.Drawing.Size(140, 35);
             this.TWAdd.TabIndex = 4;
-            this.TWAdd.Text = "Добавить элемент на место";
+            this.TWAdd.Text = "Добавить элемент";
             this.TWAdd.UseVisualStyleBackColor = true;
             this.TWAdd.Click += new System.EventHandler(this.TWAdd_Click);
             // 
             // TWNumber
             // 
             this.TWNumber.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TWNumber.Location = new System.Drawing.Point(475, 210);
+            this.TWNumber.Location = new System.Drawing.Point(550, 210);
             this.TWNumber.Margin = new System.Windows.Forms.Padding(0);
-            this.TWNumber.Mask = "00000";
+            this.TWNumber.Mask = "000";
             this.TWNumber.Name = "TWNumber";
             this.TWNumber.Size = new System.Drawing.Size(100, 34);
             this.TWNumber.TabIndex = 3;
@@ -184,6 +192,11 @@
             // 
             // binTree
             // 
+            this.binTree.Controls.Add(this.SearchTree);
+            this.binTree.Controls.Add(this.label1);
+            this.binTree.Controls.Add(this.TreeHeight);
+            this.binTree.Controls.Add(this.TreeFill);
+            this.binTree.Controls.Add(this.TreeBox1);
             this.binTree.Location = new System.Drawing.Point(4, 25);
             this.binTree.Margin = new System.Windows.Forms.Padding(0);
             this.binTree.Name = "binTree";
@@ -191,6 +204,62 @@
             this.binTree.TabIndex = 2;
             this.binTree.Text = "Бинарное дерево";
             this.binTree.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(627, 428);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 32);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Высота\n дерева";
+            // 
+            // TreeHeight
+            // 
+            this.TreeHeight.Font = new System.Drawing.Font("Arial", 18F);
+            this.TreeHeight.Location = new System.Drawing.Point(689, 428);
+            this.TreeHeight.Margin = new System.Windows.Forms.Padding(0);
+            this.TreeHeight.Multiline = true;
+            this.TreeHeight.Name = "TreeHeight";
+            this.TreeHeight.ReadOnly = true;
+            this.TreeHeight.Size = new System.Drawing.Size(120, 35);
+            this.TreeHeight.TabIndex = 4;
+            this.TreeHeight.Text = "0";
+            this.TreeHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // TreeFill
+            // 
+            this.TreeFill.Location = new System.Drawing.Point(0, 428);
+            this.TreeFill.Name = "TreeFill";
+            this.TreeFill.Size = new System.Drawing.Size(150, 35);
+            this.TreeFill.TabIndex = 3;
+            this.TreeFill.Text = "Cоздать случайно";
+            this.TreeFill.UseVisualStyleBackColor = true;
+            this.TreeFill.Click += new System.EventHandler(this.TreeFill_Click);
+            // 
+            // TreeBox1
+            // 
+            this.TreeBox1.Font = new System.Drawing.Font("Courier New", 12F);
+            this.TreeBox1.Location = new System.Drawing.Point(0, 0);
+            this.TreeBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.TreeBox1.Multiline = true;
+            this.TreeBox1.Name = "TreeBox1";
+            this.TreeBox1.ReadOnly = true;
+            this.TreeBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TreeBox1.Size = new System.Drawing.Size(809, 405);
+            this.TreeBox1.TabIndex = 2;
+            this.TreeBox1.WordWrap = false;
+            // 
+            // SearchTree
+            // 
+            this.SearchTree.Enabled = false;
+            this.SearchTree.Location = new System.Drawing.Point(171, 428);
+            this.SearchTree.Name = "SearchTree";
+            this.SearchTree.Size = new System.Drawing.Size(150, 35);
+            this.SearchTree.TabIndex = 6;
+            this.SearchTree.Text = "Дерево поиска";
+            this.SearchTree.UseVisualStyleBackColor = true;
+            this.SearchTree.Click += new System.EventHandler(this.SearchTree_Click);
             // 
             // Form1
             // 
@@ -211,6 +280,8 @@
             this.oneWay.PerformLayout();
             this.twoWay.ResumeLayout(false);
             this.twoWay.PerformLayout();
+            this.binTree.ResumeLayout(false);
+            this.binTree.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -229,5 +300,10 @@
         private System.Windows.Forms.Button TWAdd;
         private System.Windows.Forms.TextBox TWBox2;
         private System.Windows.Forms.Label TWNumberLabel;
+        private System.Windows.Forms.TextBox TreeBox1;
+        private System.Windows.Forms.Button TreeFill;
+        private System.Windows.Forms.TextBox TreeHeight;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SearchTree;
     }
 }
