@@ -32,11 +32,12 @@ namespace Lab7
             this.TWFill = new System.Windows.Forms.Button();
             this.TWBox1 = new System.Windows.Forms.TextBox();
             this.binTree = new System.Windows.Forms.TabPage();
+            this.NormalTree = new System.Windows.Forms.Button();
+            this.SearchTree = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TreeHeight = new System.Windows.Forms.TextBox();
             this.TreeFill = new System.Windows.Forms.Button();
             this.TreeBox1 = new System.Windows.Forms.TextBox();
-            this.SearchTree = new System.Windows.Forms.Button();
             this.allTabs.SuspendLayout();
             this.oneWay.SuspendLayout();
             this.twoWay.SuspendLayout();
@@ -192,6 +193,7 @@ namespace Lab7
             // 
             // binTree
             // 
+            this.binTree.Controls.Add(this.NormalTree);
             this.binTree.Controls.Add(this.SearchTree);
             this.binTree.Controls.Add(this.label1);
             this.binTree.Controls.Add(this.TreeHeight);
@@ -204,6 +206,29 @@ namespace Lab7
             this.binTree.TabIndex = 2;
             this.binTree.Text = "Бинарное дерево";
             this.binTree.UseVisualStyleBackColor = true;
+            // 
+            // NormalTree
+            // 
+            this.NormalTree.Location = new System.Drawing.Point(340, 428);
+            this.NormalTree.Margin = new System.Windows.Forms.Padding(0);
+            this.NormalTree.Name = "NormalTree";
+            this.NormalTree.Size = new System.Drawing.Size(150, 35);
+            this.NormalTree.TabIndex = 7;
+            this.NormalTree.Text = "Обычное дерево";
+            this.NormalTree.UseVisualStyleBackColor = true;
+            this.NormalTree.Visible = false;
+            this.NormalTree.Click += new System.EventHandler(this.NormalTree_Click);
+            // 
+            // SearchTree
+            // 
+            this.SearchTree.Enabled = false;
+            this.SearchTree.Location = new System.Drawing.Point(170, 428);
+            this.SearchTree.Name = "SearchTree";
+            this.SearchTree.Size = new System.Drawing.Size(150, 35);
+            this.SearchTree.TabIndex = 6;
+            this.SearchTree.Text = "Дерево поиска";
+            this.SearchTree.UseVisualStyleBackColor = true;
+            this.SearchTree.Click += new System.EventHandler(this.SearchTree_Click);
             // 
             // label1
             // 
@@ -250,17 +275,6 @@ namespace Lab7
             this.TreeBox1.TabIndex = 2;
             this.TreeBox1.WordWrap = false;
             // 
-            // SearchTree
-            // 
-            this.SearchTree.Enabled = false;
-            this.SearchTree.Location = new System.Drawing.Point(171, 428);
-            this.SearchTree.Name = "SearchTree";
-            this.SearchTree.Size = new System.Drawing.Size(150, 35);
-            this.SearchTree.TabIndex = 6;
-            this.SearchTree.Text = "Дерево поиска";
-            this.SearchTree.UseVisualStyleBackColor = true;
-            this.SearchTree.Click += new System.EventHandler(this.SearchTree_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -305,5 +319,6 @@ namespace Lab7
         private System.Windows.Forms.TextBox TreeHeight;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SearchTree;
+        private System.Windows.Forms.Button NormalTree;
     }
 }

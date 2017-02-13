@@ -72,7 +72,7 @@ namespace Lab7
             MainNumber--;
             if(MainNumber < 0)
             {
-                MessageBox.Show("Нельзя добавить элемент на отрицательное положение в списке");
+                MessageBox.Show("Нельзя добавить элемент до начала списка");
                 return;
             }
 
@@ -119,10 +119,12 @@ namespace Lab7
         #region BinTree
 
         BinTree root = null;
+        BinTree search = null;
 
         private void TreeFill_Click (object sender, EventArgs e)
         {
             root = BinTree.BalanceMake(random.Next((int)(maxLength*1.2)) + 1);
+            search = root.SearchTree( );
             TreeBox1.Text = root.ToString( );
             TreeHeight.Text = root.Height.ToString();
             SearchTree.Enabled = true;
@@ -130,7 +132,14 @@ namespace Lab7
 
         private void SearchTree_Click (object sender, EventArgs e)
         {
-            TreeBox1.Text = root.SearchTree( ).ToString( );
+            TreeBox1.Text = search.ToString( );
+            NormalTree.Visible = true;
+        }
+
+        private void NormalTree_Click (object sender, EventArgs e)
+        {
+            TreeBox1.Text = root.ToString( );
+            NormalTree.Visible = false;
         }
 
 
