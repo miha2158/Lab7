@@ -178,7 +178,22 @@ namespace Lab7
             TreeBox1.Text = root.ToString( );
         }
 
-        
+        private void UserTree_Click (object sender, EventArgs e)
+        {
+            NormalTree.Visible = false;
+
+            Form3 child = new Form3(this, 2);
+            AddOwnedForm(child);
+            child.ShowDialog(this);
+            SuspendLayout( );
+
+            TreeBox1.Text = head.ToString(true);
+            child.Dispose( );
+
+            SearchTree.Enabled = true;
+        }
+
+
         #endregion
     }
 }

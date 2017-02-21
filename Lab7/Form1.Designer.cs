@@ -42,7 +42,7 @@ namespace Lab7
             this.TreeHeight = new System.Windows.Forms.TextBox();
             this.TreeFill = new System.Windows.Forms.Button();
             this.TreeBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.UserTree = new System.Windows.Forms.Button();
             this.allTabs.SuspendLayout();
             this.oneWay.SuspendLayout();
             this.twoWay.SuspendLayout();
@@ -221,7 +221,7 @@ namespace Lab7
             // 
             // binTree
             // 
-            this.binTree.Controls.Add(this.button1);
+            this.binTree.Controls.Add(this.UserTree);
             this.binTree.Controls.Add(this.Height);
             this.binTree.Controls.Add(this.TreeSizeBox);
             this.binTree.Controls.Add(this.NormalTree);
@@ -327,14 +327,15 @@ namespace Lab7
             this.TreeBox1.TabIndex = 2;
             this.TreeBox1.WordWrap = false;
             // 
-            // button1
+            // UserTree
             // 
-            this.button1.Location = new System.Drawing.Point(0, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 35);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Cоздать вручную";
-            this.button1.UseVisualStyleBackColor = true;
+            this.UserTree.Location = new System.Drawing.Point(0, 390);
+            this.UserTree.Name = "UserTree";
+            this.UserTree.Size = new System.Drawing.Size(136, 35);
+            this.UserTree.TabIndex = 10;
+            this.UserTree.Text = "Cоздать вручную";
+            this.UserTree.UseVisualStyleBackColor = true;
+            this.UserTree.Click += new System.EventHandler(this.UserTree_Click);
             // 
             // Form1
             // 
@@ -385,6 +386,6 @@ namespace Lab7
         private System.Windows.Forms.MaskedTextBox TreeSizeBox;
         private System.Windows.Forms.Label Height;
         private System.Windows.Forms.Button TWClear;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button UserTree;
     }
 }
