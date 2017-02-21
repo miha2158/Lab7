@@ -24,7 +24,7 @@ namespace Lab7
 
         #region OneWay
 
-        OneWayNode head;
+        public OneWayNode head;
 
         private void OWFill_Click (object sender, EventArgs e)
         {
@@ -42,8 +42,10 @@ namespace Lab7
         {
             if(head == null)
             {
-                MessageBox.Show("Нельзя удалить ничего из пустого списка");
+                MessageBox.Show("Нельзя удалить элемент из пустого списка");
                 DeleteLastEven.Enabled = false;
+                OWFill.Focus( );
+
                 head = new OneWayNode(0);
             }
 
@@ -52,24 +54,36 @@ namespace Lab7
 
             if (!OneWayNode.DeleteLastEven(ref head))
                 MessageBox.Show("В списке нет чётных элементов", "ОК?");
-            try
-            { OWBox2.Text = head.ToString(true);}
-            catch (NullReferenceException)
-            { OWBox2.Text = " ";}
+
+            OWBox2.Text = head != null? head.ToString(true) : " ";
+            //OWBox2.Text = head?.ToString(true);
         }
+
+        private void OWUserFill_Click (object sender, EventArgs e)
+        {
+            Form3 child = new Form3(this, 1);
+            AddOwnedForm(child);
+            child.ShowDialog(this);
+            SuspendLayout();
+
+            OWBox1.Text = head?.ToString(true);
+            OWBox2.Text = string.Empty;
+            DeleteLastEven.Enabled = true;
+            child.Dispose();
+        }
+
 
         #endregion
 
         #region TwoWay
 
-        TwoWayNode point;
+        public TwoWayNode point;
 
         private void TWAdd_Click (object sender, EventArgs e)
         {
-            point = point.SetFirst();
-            int MainNumber;
-            int.TryParse(TWNumber.Text, out MainNumber);
-            MainNumber--;
+            point = point?.SetFirst();
+            int MainNumber = int.Parse(TWNumber.Text) - 1;
+
             if(MainNumber < 0)
             {
                 MessageBox.Show("Нельзя добавить элемент до начала списка");
@@ -86,6 +100,7 @@ namespace Lab7
                 if (TWBox2.Text != string.Empty)
                     TWBox1.Text = TWBox2.Text;
                 TWBox2.Text = point.ToString(true);
+
                 return;
             }
 
@@ -113,17 +128,32 @@ namespace Lab7
             TWBox2.Text = string.Empty;
         }
 
+        private void TWClear_Click (object sender, EventArgs e)
+        {
+            point = null;
+            TWBox2.Clear();
+            TWBox1.Clear();
+        }
+
 
         #endregion
 
         #region BinTree
 
-        BinTree root = null;
-        BinTree search = null;
+        public BinTree root = null;
+        public BinTree search = null;
 
         private void TreeFill_Click (object sender, EventArgs e)
         {
-            root = BinTree.BalanceMake(random.Next((int)(maxLength*1.2)) + 1);
+            NormalTree.Visible = false;
+
+            if (TreeSizeBox.Text == string.Empty)
+                root = BinTree.BalanceMake(random.Next((int)(maxLength * 1.2)) + 1);
+            else if (int.Parse(TreeSizeBox.Text) != 0)
+                root = BinTree.BalanceMake(int.Parse(TreeSizeBox.Text));
+            else
+                MessageBox.Show("Нельзя создать пустое дерево");
+
             search = root.SearchTree( );
             TreeBox1.Text = root.ToString( );
             TreeHeight.Text = root.Height.ToString();
@@ -132,18 +162,23 @@ namespace Lab7
 
         private void SearchTree_Click (object sender, EventArgs e)
         {
-            TreeBox1.Text = search.ToString( );
             NormalTree.Visible = true;
+            TreeBox1.Text = search.ToString( );
+
+            Form2 tempDialogue = new Form2(this) { Owner = this };
+            AddOwnedForm(tempDialogue);
+            tempDialogue.ShowDialog(this);
+            SuspendLayout();
+            tempDialogue.Dispose();
         }
 
         private void NormalTree_Click (object sender, EventArgs e)
         {
-            TreeBox1.Text = root.ToString( );
             NormalTree.Visible = false;
+            TreeBox1.Text = root.ToString( );
         }
 
-
-
+        
         #endregion
     }
 }

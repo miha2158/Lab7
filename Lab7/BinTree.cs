@@ -73,34 +73,51 @@ namespace Lab7
             char[] array = ToArray( ).ToArray( );
 
             Array.Sort(array);
-
-            for (int i = 1; i < array.Length; i++)
-                if (array[i - 1] == array[i])
-                {
-                    for (int j = i; j < array.Length; j++)
-                        array[j - 1] = array[j];
-
-                    Array.Resize(ref array, array.Length - 1);
-                }
             
+            return FromArray(array, false);
+        }
 
-            return FromArray(array);
+        public bool Search (char element)
+        {
+            if (element == Info)
+                return true;
+
+            if (element < Info)
+                if (Left != null)
+                    return Left.Search(element);
+
+            if (element > Info)
+                if (Right != null)
+                    return Right.Search(element);
+
+            return false;
         }
 
         #region Arrays
 
-        public static BinTree FromArray (char[] array)
+        public static BinTree FromArray (char[] array, bool leaveDuplicates = true)
         {
             if (array == null || array.Length == 0)
                 return null;
+
+            if (!leaveDuplicates)
+                for (int i = 1; i < array.Length; i++)
+                    if (array[i - 1] == array[i])
+                    {
+                        for (int j = i; j < array.Length; j++)
+                            array[j - 1] = array[j];
+
+                        Array.Resize(ref array, array.Length - 1);
+                    }
+
 
             int size = 2;
             while (size < array.Length)
                 size *= 2;
 
             BinTree temp = BalanceMake(size, false);
-            int i = 0;
-            FromArray(temp, array, ref i);
+            int index = 0;
+            FromArray(temp, array, ref index);
 
             temp.Clear( );
 

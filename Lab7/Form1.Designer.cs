@@ -20,11 +20,13 @@ namespace Lab7
         {
             this.allTabs = new System.Windows.Forms.TabControl();
             this.oneWay = new System.Windows.Forms.TabPage();
+            this.OWUserFill = new System.Windows.Forms.Button();
             this.OWBox2 = new System.Windows.Forms.TextBox();
             this.DeleteLastEven = new System.Windows.Forms.Button();
             this.OWFill = new System.Windows.Forms.Button();
             this.OWBox1 = new System.Windows.Forms.TextBox();
             this.twoWay = new System.Windows.Forms.TabPage();
+            this.TWClear = new System.Windows.Forms.Button();
             this.TWNumberLabel = new System.Windows.Forms.Label();
             this.TWBox2 = new System.Windows.Forms.TextBox();
             this.TWAdd = new System.Windows.Forms.Button();
@@ -32,12 +34,15 @@ namespace Lab7
             this.TWFill = new System.Windows.Forms.Button();
             this.TWBox1 = new System.Windows.Forms.TextBox();
             this.binTree = new System.Windows.Forms.TabPage();
+            this.Height = new System.Windows.Forms.Label();
+            this.TreeSizeBox = new System.Windows.Forms.MaskedTextBox();
             this.NormalTree = new System.Windows.Forms.Button();
             this.SearchTree = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Length = new System.Windows.Forms.Label();
             this.TreeHeight = new System.Windows.Forms.TextBox();
             this.TreeFill = new System.Windows.Forms.Button();
             this.TreeBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.allTabs.SuspendLayout();
             this.oneWay.SuspendLayout();
             this.twoWay.SuspendLayout();
@@ -58,6 +63,7 @@ namespace Lab7
             // 
             // oneWay
             // 
+            this.oneWay.Controls.Add(this.OWUserFill);
             this.oneWay.Controls.Add(this.OWBox2);
             this.oneWay.Controls.Add(this.DeleteLastEven);
             this.oneWay.Controls.Add(this.OWFill);
@@ -69,6 +75,16 @@ namespace Lab7
             this.oneWay.TabIndex = 0;
             this.oneWay.Text = "Однонаправленный список";
             this.oneWay.UseVisualStyleBackColor = true;
+            // 
+            // OWUserFill
+            // 
+            this.OWUserFill.Location = new System.Drawing.Point(390, 210);
+            this.OWUserFill.Name = "OWUserFill";
+            this.OWUserFill.Size = new System.Drawing.Size(150, 35);
+            this.OWUserFill.TabIndex = 4;
+            this.OWUserFill.Text = "Cоздать вручную";
+            this.OWUserFill.UseVisualStyleBackColor = true;
+            this.OWUserFill.Click += new System.EventHandler(this.OWUserFill_Click);
             // 
             // OWBox2
             // 
@@ -115,6 +131,7 @@ namespace Lab7
             // 
             // twoWay
             // 
+            this.twoWay.Controls.Add(this.TWClear);
             this.twoWay.Controls.Add(this.TWNumberLabel);
             this.twoWay.Controls.Add(this.TWBox2);
             this.twoWay.Controls.Add(this.TWAdd);
@@ -128,6 +145,17 @@ namespace Lab7
             this.twoWay.TabIndex = 1;
             this.twoWay.Text = "Двунаправленный список";
             this.twoWay.UseVisualStyleBackColor = true;
+            // 
+            // TWClear
+            // 
+            this.TWClear.Location = new System.Drawing.Point(156, 210);
+            this.TWClear.Margin = new System.Windows.Forms.Padding(0);
+            this.TWClear.Name = "TWClear";
+            this.TWClear.Size = new System.Drawing.Size(150, 35);
+            this.TWClear.TabIndex = 7;
+            this.TWClear.Text = "Очистить список";
+            this.TWClear.UseVisualStyleBackColor = true;
+            this.TWClear.Click += new System.EventHandler(this.TWClear_Click);
             // 
             // TWNumberLabel
             // 
@@ -193,9 +221,12 @@ namespace Lab7
             // 
             // binTree
             // 
+            this.binTree.Controls.Add(this.button1);
+            this.binTree.Controls.Add(this.Height);
+            this.binTree.Controls.Add(this.TreeSizeBox);
             this.binTree.Controls.Add(this.NormalTree);
             this.binTree.Controls.Add(this.SearchTree);
-            this.binTree.Controls.Add(this.label1);
+            this.binTree.Controls.Add(this.Length);
             this.binTree.Controls.Add(this.TreeHeight);
             this.binTree.Controls.Add(this.TreeFill);
             this.binTree.Controls.Add(this.TreeBox1);
@@ -207,12 +238,32 @@ namespace Lab7
             this.binTree.Text = "Бинарное дерево";
             this.binTree.UseVisualStyleBackColor = true;
             // 
+            // Height
+            // 
+            this.Height.AutoSize = true;
+            this.Height.Location = new System.Drawing.Point(627, 428);
+            this.Height.Name = "Height";
+            this.Height.Size = new System.Drawing.Size(59, 32);
+            this.Height.TabIndex = 9;
+            this.Height.Text = "Высота\n дерева";
+            // 
+            // TreeSizeBox
+            // 
+            this.TreeSizeBox.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TreeSizeBox.Location = new System.Drawing.Point(269, 429);
+            this.TreeSizeBox.Margin = new System.Windows.Forms.Padding(0);
+            this.TreeSizeBox.Mask = "00";
+            this.TreeSizeBox.Name = "TreeSizeBox";
+            this.TreeSizeBox.Size = new System.Drawing.Size(127, 34);
+            this.TreeSizeBox.TabIndex = 8;
+            this.TreeSizeBox.ValidatingType = typeof(int);
+            // 
             // NormalTree
             // 
-            this.NormalTree.Location = new System.Drawing.Point(340, 428);
+            this.NormalTree.Location = new System.Drawing.Point(139, 390);
             this.NormalTree.Margin = new System.Windows.Forms.Padding(0);
             this.NormalTree.Name = "NormalTree";
-            this.NormalTree.Size = new System.Drawing.Size(150, 35);
+            this.NormalTree.Size = new System.Drawing.Size(127, 35);
             this.NormalTree.TabIndex = 7;
             this.NormalTree.Text = "Обычное дерево";
             this.NormalTree.UseVisualStyleBackColor = true;
@@ -222,22 +273,22 @@ namespace Lab7
             // SearchTree
             // 
             this.SearchTree.Enabled = false;
-            this.SearchTree.Location = new System.Drawing.Point(170, 428);
+            this.SearchTree.Location = new System.Drawing.Point(269, 390);
             this.SearchTree.Name = "SearchTree";
-            this.SearchTree.Size = new System.Drawing.Size(150, 35);
+            this.SearchTree.Size = new System.Drawing.Size(127, 35);
             this.SearchTree.TabIndex = 6;
-            this.SearchTree.Text = "Дерево поиска";
+            this.SearchTree.Text = "Поиск";
             this.SearchTree.UseVisualStyleBackColor = true;
             this.SearchTree.Click += new System.EventHandler(this.SearchTree_Click);
             // 
-            // label1
+            // Length
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(627, 428);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 32);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Высота\n дерева";
+            this.Length.AutoSize = true;
+            this.Length.Location = new System.Drawing.Point(169, 429);
+            this.Length.Name = "Length";
+            this.Length.Size = new System.Drawing.Size(97, 32);
+            this.Length.TabIndex = 5;
+            this.Length.Text = "Длина нового\n дерева";
             // 
             // TreeHeight
             // 
@@ -255,8 +306,9 @@ namespace Lab7
             // TreeFill
             // 
             this.TreeFill.Location = new System.Drawing.Point(0, 428);
+            this.TreeFill.Margin = new System.Windows.Forms.Padding(0);
             this.TreeFill.Name = "TreeFill";
-            this.TreeFill.Size = new System.Drawing.Size(150, 35);
+            this.TreeFill.Size = new System.Drawing.Size(136, 35);
             this.TreeFill.TabIndex = 3;
             this.TreeFill.Text = "Cоздать случайно";
             this.TreeFill.UseVisualStyleBackColor = true;
@@ -271,9 +323,18 @@ namespace Lab7
             this.TreeBox1.Name = "TreeBox1";
             this.TreeBox1.ReadOnly = true;
             this.TreeBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TreeBox1.Size = new System.Drawing.Size(809, 405);
+            this.TreeBox1.Size = new System.Drawing.Size(809, 375);
             this.TreeBox1.TabIndex = 2;
             this.TreeBox1.WordWrap = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 35);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Cоздать вручную";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -317,8 +378,13 @@ namespace Lab7
         private System.Windows.Forms.TextBox TreeBox1;
         private System.Windows.Forms.Button TreeFill;
         private System.Windows.Forms.TextBox TreeHeight;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Length;
         private System.Windows.Forms.Button SearchTree;
         private System.Windows.Forms.Button NormalTree;
+        private System.Windows.Forms.Button OWUserFill;
+        private System.Windows.Forms.MaskedTextBox TreeSizeBox;
+        private System.Windows.Forms.Label Height;
+        private System.Windows.Forms.Button TWClear;
+        private System.Windows.Forms.Button button1;
     }
 }
