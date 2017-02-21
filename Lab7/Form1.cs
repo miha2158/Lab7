@@ -187,7 +187,7 @@ namespace Lab7
             child.ShowDialog(this);
             SuspendLayout( );
 
-            TreeBox1.Text = head.ToString(true);
+            TreeBox1.Text = root.ToString( );
             child.Dispose( );
 
             SearchTree.Enabled = true;
