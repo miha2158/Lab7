@@ -187,7 +187,7 @@ namespace Lab7
             for (int i = M; i-- > 0;)
                 result = result + " ";
 
-            result = result + (int)Info + "\r\n";
+            result = result + Info + "\r\n";
 
             result = result + Right?.Write(M + Margin);
 
