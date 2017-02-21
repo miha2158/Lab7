@@ -18,7 +18,7 @@ namespace Lab7
         {
             InitializeComponent( );
             parent = formParent;
-            Location = parent.Location;
+            DesktopLocation = parent.DesktopLocation;
         }
 
         protected Form2 ( )

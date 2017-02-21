@@ -90,6 +90,8 @@ namespace Lab7
                 return;
             }
 
+            TWClear.Enabled = true;
+
             if (MainNumber == 0)
             {
                 if (point == null)
@@ -120,6 +122,7 @@ namespace Lab7
 
         private void TWFill_Click (object sender, EventArgs e)
         {
+            TWClear.Enabled = false;
             point = new TwoWayNode(string.Empty);
             point.Refill();
             point = point.SetFirst();
@@ -130,6 +133,7 @@ namespace Lab7
 
         private void TWClear_Click (object sender, EventArgs e)
         {
+            TWClear.Enabled = false;
             point = null;
             TWBox2.Clear();
             TWBox1.Clear();

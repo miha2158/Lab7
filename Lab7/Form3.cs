@@ -19,6 +19,7 @@ namespace Lab7
         {
             InitializeComponent( );
             parentForm = parent;
+            DesktopLocation = parent.DesktopLocation;
             Owner = parentForm;
             operatingMode = mode;
             if (operatingMode == 2)

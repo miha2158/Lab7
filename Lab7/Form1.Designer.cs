@@ -148,6 +148,7 @@ namespace Lab7
             // 
             // TWClear
             // 
+            this.TWClear.Enabled = false;
             this.TWClear.Location = new System.Drawing.Point(156, 210);
             this.TWClear.Margin = new System.Windows.Forms.Padding(0);
             this.TWClear.Name = "TWClear";
